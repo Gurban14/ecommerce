@@ -1,0 +1,130 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+ 
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'panel/assets/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link href="{% static 'panel/assets/vendor/fonts/circular-std/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'panel/assets/libs/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'panel/assets/vendor/fonts/fontawesome/css/fontawesome-all.css' %}">
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- main wrapper -->
+    <!-- ============================================================== -->
+    <div class="dashboard-main-wrapper">
+    {% include "panel/nav.html" %}
+        <div class="dashboard-wrapper">
+            <div class="container-fluid  dashboard-content">
+                <!-- ============================================================== -->
+                <!-- pageheader -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="page-header">
+                            <h2 class="pageheader-title">Detail of product: {{obj.name}} </h2>
+                            <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+                            <div class="page-breadcrumb">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Category Table</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Category</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- end pageheader -->
+                <!-- ============================================================== -->
+               
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                            <div class="card">
+                                <h5 class="card-header">Category Table</h5>
+                                <div class="card-body">
+                                    <table class="table table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Name: </th>
+                                                <th scope="row">{{obj.name}}</th>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Category: </th>
+                                                <th scope="row">{{obj.category}}</th>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Price: </th>
+                                                <th scope="row">{{obj.price}} m.</th>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Discount: </th>
+                                                <th scope="row">{{obj.discount}}</th>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Final Price: </th>
+                                                <th scope="row">{{obj.final_price}} m.</th>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Stock Status: </th>
+                                                {% if i.stock %}
+                                                <td><i class='fas fa-check-circle text-success'></i>(In Stock)</td>
+                                                {% else %}
+                                                <td><i class='fas fa-times-circle text-danget'>(Out of Stock)</i></td>
+                                                {% endif %}
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Weight: </th>
+                                                <th scope="row">{{obj.weight}} KG</th>
+                                            </tr>
+                                            
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                            <div class="card">
+                                <h5 class="card-header">Category Table</h5>
+                                <div class="card-body">
+                                    <table class="table table-striped">
+                                        <tbody>
+                                            {% for i in obj.images.all %}
+                                            <tr>
+                                                <td class='text-center'><img  src='{{i.image.url}}' class='rounded' width='300'></td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                
+                    </div>
+
+               
+            </div>
+
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end main wrapper -->
+    <!-- ============================================================== -->
+    <!-- Optional JavaScript -->
+    <script src="{% static 'panel/assets/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'panel/assets/vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'panel/assets/vendor/slimscroll/jquery.slimscroll.js' %}"></script>
+    <script src="{% static 'panel/assets/vendor/custom-js/jquery.multi-select.html' %}"></script>
+    <script src="{% static 'panel/assets/libs/js/main-js.js' %}"></script>
+</body>
+ 
+</html>
